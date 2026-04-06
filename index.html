@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoWatt France | Réduisez votre facture d'électricité jusqu'à 65% (Site Officiel)</title>
+    
+    <!-- SEO & Compliance -->
+    <meta name="description" content="EcoWatt est le stabilisateur d'électricité n°1 en France. Réduisez votre facture jusqu'à 65% avec notre technologie certifiée.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ecowatt-fr.vercel.app/">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div id="announcement-bar">
+        <div class="alert-badges container">
+            <div class="alert-badge">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <span data-tr="ann_shipping">Livraison Gratuite en France Aujourd'hui</span>
+            </div>
+            <div class="alert-badge hide-mobile">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span data-tr="hero_guarantee">Garantie Satisfait ou Remboursé 60 Jours</span>
+            </div>
+            <div class="alert-badge">
+                <i class="fa-solid fa-fire"></i>
+                <span data-tr="ann_stock">Stock Limité - Profitez de 50% de Réduction</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-inner container">
+            <a href="#hero" class="nav-logo">
+                <img src="images/imgi_1_ecowatt-logo-v3.1.png" alt="EcoWatt Logo">
+            </a>
+            
+            <nav class="nav-links hide-mobile">
+                <a href="#benefits" data-tr="nav_benefits">Avantages</a>
+                <a href="#science" data-tr="nav_science">Science</a>
+                <a href="#reviews" data-tr="nav_reviews">Avis</a>
+                <a href="#faq" data-tr="nav_faq">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-switcher hide-mobile">
+                    <button class="lang-btn active" id="btn-fr" onclick="switchLanguage('fr')">FR</button>
+                    <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">EN</button>
+                </div>
+                <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-premium nav-cta" data-tr="btn_get_now">ACHETER MAINTENANT</a>
+                <button id="menuToggle" class="show-mobile"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="drawerOverlay" onclick="closeDrawer()"></div>
+    <div id="mobileDrawer">
+        <div class="drawer-header">
+            <img src="images/logo.webp" alt="EcoWatt Logo" style="height: 30px;">
+            <button id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-links">
+            <a href="#benefits" onclick="closeDrawer()" data-tr="nav_benefits">Avantages</a>
+            <a href="#science" onclick="closeDrawer()" data-tr="nav_science">Science</a>
+            <a href="#reviews" onclick="closeDrawer()" data-tr="nav_reviews">Avis</a>
+            <a href="#faq" onclick="closeDrawer()" data-tr="nav_faq">FAQ</a>
+        </div>
+        <div class="drawer-lang">
+            <p data-tr="drawer_lang_title">Langue:</p>
+            <div class="lang-btns">
+                <button class="lang-btn" id="drawer-btn-fr" onclick="switchLanguage('fr'); closeDrawer()">Français</button>
+                <button class="lang-btn" id="drawer-btn-en" onclick="switchLanguage('en'); closeDrawer()">English</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge" data-tr="hero_badge">APPAREIL DE STABILISATION ÉNERGÉTIQUE N°1 EN FRANCE</div>
+                <h1 data-tr="hero_h1">Réduisez Votre <span class="highlight">Facture d'Électricité</span> de 65% Dès Aujourd'hui</h1>
+                <p class="hero-p" data-tr="hero_p">Fatigué des factures d'électricité exorbitantes ? EcoWatt utilise la technologie brevetée EST pour optimiser la consommation d'énergie de votre foyer. Rejoignez plus de 100 000 foyers français qui économisent des centaines d'euros chaque année.</p>
+                
+                <div class="hero-bullets">
+                    <div class="hero-bullet"><i class="fa-solid fa-circle-check"></i> <span data-tr="hero_feat1">Certifié CE / RoHS</span></div>
+                    <div class="hero-bullet"><i class="fa-solid fa-circle-check"></i> <span data-tr="hero_guarantee">Garantie 60 Jours</span></div>
+                    <div class="hero-bullet"><i class="fa-solid fa-circle-check"></i> <span>Installation Plug & Play</span></div>
+                </div>
+
+                <div class="hero-cta-box">
+                    <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-premium btn-hero" data-tr="btn_hero">OBTENEZ ECOWATT — ÉCONOMISEZ 65% AUJOURD'HUI</a>
+                    <div class="risk-free">
+                        <i class="fa-solid fa-lock"></i>
+                        <span data-tr="hero_risk_free">Achat sans risque avec garantie de remboursement de 60 jours</span>
+                    </div>
+                </div>
+
+                <div class="hero-trust-row">
+                    <div class="stars">★★★★★</div>
+                    <span data-tr="hero_rev_top">4.9/5 par plus de 100 000 foyers français</span>
+                </div>
+            </div>
+            <div class="hero-image-wrap">
+                <div class="hero-circle-glow"></div>
+                <div class="hero-image">
+                    <img src="images/imgi_5_background-small-s.png" alt="EcoWatt Device" class="float-animation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Grid -->
+    <section id="trust-grid">
+        <div class="container">
+            <div class="trust-grid-wrapper">
+                <div class="trust-item">
+                    <i class="fa-solid fa-medal"></i>
+                    <div>
+                        <strong data-tr="trust1_title">Top Qualité</strong>
+                        <span data-tr="trust1_sub">Technologie Allemande</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div>
+                        <strong data-tr="trust2_title">Livraison Rapide</strong>
+                        <span data-tr="trust2_sub">Partout en France</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fa-solid fa-lock"></i>
+                    <div>
+                        <strong data-tr="trust3_title">Paiement Sécurisé</strong>
+                        <span data-tr="trust3_sub">Cryptage 256-bit SSL</span>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fa-solid fa-star"></i>
+                    <div>
+                        <strong data-tr="stat3">4.9/5 Rating</strong>
+                        <span data-tr="hero_rev_top">Avis Vérifiés</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Stats -->
+    <section id="social-proof">
+        <div class="container">
+            <div class="social-proof-grid">
+                <div class="stat-item">
+                    <div class="stat-number">100,000+</div>
+                    <div class="stat-label" data-tr="stat1">Clients Heureux</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-tr="stat2">65% Économisé</div>
+                    <div class="stat-label">Réduction Maximale</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Client</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container alternate-layout">
+            <div class="layout-text">
+                <div class="section-label" data-tr="problem_lab">LA RÉALITÉ CACHÉE</div>
+                <h2 class="section-h2" data-tr="problem_title">Votre facture cache une vérité coûteuse...</h2>
+                <p class="section-p" data-tr="problem_p1">Les fournisseurs d'énergie vous facturent pour une électricité 'sale' et instable. La majeure partie de l'énergie entrant dans votre maison est gaspillée sous forme de chaleur et de pics de tension.</p>
+                <p class="section-p" data-tr="problem_p2">EcoWatt stabilise votre courant, réduit ces pertes et protège vos appareils coûteux, tout en faisant tourner votre compteur plus lentement.</p>
+                <div class="urgency-badge">
+                    <i class="fa-solid fa-fire"></i>
+                    <span data-tr="ann_stock">Vente Flash : Stock limité à -50%. Commandez maintenant !</span>
+                </div>
+                <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-premium" data-tr="btn_prob">VÉRIFIER LA DISPONIBILITÉ</a>
+            </div>
+            <div class="layout-image">
+                <img src="images/imgi_14_power-stabilizer-3.jpg" alt="EcoWatt Savings" class="glass-shadow">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-label" data-tr="rev_lab">TEMOIGNAGES</div>
+                <h2 class="section-h2" data-tr="rev_title">Plus de 100 000 familles ont changé leur vie</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/60?u=1" alt="User">
+                        <div>
+                            <strong>Marie L.</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p data-tr="r1_b">"Ma facture est passée de 150€ à 95€ en un seul mois. Je n'arrivais pas à y croire ! Meilleur achat."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/60?u=2" alt="User">
+                        <div>
+                            <strong>Thomas R.</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p data-tr="r2_b">"Parfait pour ma petite entreprise. Mes moteurs de frigo font moins de bruit et la consommation a chuté de 40%."</p>
+                </div>
+                <div class="review-card hide-mobile">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/60?u=3" alt="User">
+                        <div>
+                            <strong>Sophie K.</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p data-tr="r3_b">"Facile à utiliser, il suffit de le brancher et de l'oublier. Service client au top !"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-label" data-tr="feat_lab">INNOVATION TECH</div>
+                <h2 class="section-h2" data-tr="feat_title">6 Façons dont EcoWatt réduit vos coûts</h2>
+            </div>
+            <div class="features-grid-6">
+                <div class="feat-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3 data-tr="f1_t">Économies immédiates</h3>
+                    <p data-tr="f1_d">Réduisez vos factures dès le premier mois d'utilisation.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-shield"></i>
+                    <h3 data-tr="f2_t">Protection Totale</h3>
+                    <p data-tr="f2_d">Protège vos appareils contre les pics de tension nocifs.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-plug"></i>
+                    <h3 data-tr="f3_t">Plug & Play</h3>
+                    <p data-tr="f3_d">Aucune installation requise. Branchez et économisez.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3 data-tr="f4_t">Technologie Verte</h3>
+                    <p data-tr="f4_d">Réduit les ondes électromagnétiques pour un foyer sain.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <h3 data-tr="f5_t">Durée de vie accrue</h3>
+                    <p data-tr="f5_d">Prolonge la vie de vos appareils électroménagers coûteux.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3 data-tr="f6_t">Rendement Optimal</h3>
+                    <p data-tr="f6_d">Stabilise le courant pour un meilleur rendement calorique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Section (3-Step Process) -->
+    <section id="science" class="bg-alt">
+        <div class="container alternate-layout reverse">
+            <div class="layout-image">
+                <img src="images/imgi_8_hero-bg.png" alt="EcoWatt Science" class="glass-shadow">
+            </div>
+            <div class="layout-text">
+                <div class="section-label" data-tr="sci_lab">LA SCIENCE</div>
+                <h2 class="section-h2" data-tr="sci_title">Comment EcoWatt Transforme Votre Foyer</h2>
+                <div class="step-process">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <strong data-tr="sci_l1">Stabilisation du Flux</strong>
+                            <p data-tr="sci_body1">La technologie EST lisse l'électricité instable entrant dans votre domicile.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <strong data-tr="sci_l2">Filtrage des Interférences</strong>
+                            <p data-tr="sci_body2">La technologie EST fonctionne avec un condensateur avancé pour lisser les ondes sinusoïdales de votre électricité.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <strong data-tr="sci_l3">Réalisez des Économies</strong>
+                            <p>Profitez d'une baisse immédiate de vos dépenses énergétiques mensuelles.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-premium" data-tr="btn_feat">ÉCONOMISEZ 50% MAINTENANT</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container small-container">
+            <div class="section-header text-center">
+                <h2 class="section-h2" data-tr="faq_title">Questions Fréquemment Posées</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-tr="q1">Comment fonctionne EcoWatt ?</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-tr="a1">EcoWatt stabilise votre tension électrique, réduit les interférences dans vos lignes et protège vos appareils.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-tr="q2">Est-ce légal ?</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-tr="a2">Oui, EcoWatt est 100% légal. Il optimise l'efficacité de l'électricité à l'intérieur de votre domicile.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-tr="q4">Est-il compatible avec Linky ?</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-tr="a4">Oui, il fonctionne parfaitement avec tous les compteurs, y compris Linky.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-tr="q5">Y a-t-il une garantie ?</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-tr="a5">Oui, garantie 'Satisfait ou Remboursé' de 60 jours incluse.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <img src="images/imgi_1_ecowatt-logo-v3.1.png" alt="EcoWatt Logo" style="height: 35px; margin-bottom: 20px;">
+                <p class="footer-desc" data-tr="footer_brand_desc">EcoWatt est à la pointe de l'innovation énergétique, offrant des solutions intelligentes.</p>
+                <div class="footer-social">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                </div>
+            </div>
+            <div class="footer-col links-col">
+                <h4 data-tr="footer_info_title">Informations</h4>
+                <ul>
+                    <li><a href="#benefits" data-tr="nav_benefits">Avantages</a></li>
+                    <li><a href="#science" data-tr="nav_science">Science</a></li>
+                    <li><a href="#reviews" data-tr="nav_reviews">Avis</a></li>
+                    <li><a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" data-tr="nav_buy">Acheter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col links-col">
+                <h4 data-tr="footer_legal_title">Légal</h4>
+                <ul>
+                    <li><a href="#" onclick="openModal('privacy')" data-tr="link_privacy">Confidentialité</a></li>
+                    <li><a href="#" onclick="openModal('terms')" data-tr="link_terms">Conditions</a></li>
+                    <li><a href="#" onclick="openModal('returns')" data-tr="link_returns">Retours</a></li>
+                    <li><a href="#" data-tr="link_shipping">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-col trust-col">
+                <h4 data-tr="footer_trust_title">Paiement Sécurisé</h4>
+                <div class="payment-icons">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-stripe"></i>
+                    <i class="fa-brands fa-cc-apple-pay"></i>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;" data-tr="dist_info">Distributeur Officiel EcoWatt Europe.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 EcoWatt. <span data-tr="copy_r">Tous droits réservés.</span></p>
+                <div class="footer-links-small">
+                    <span style="opacity: 0.5;">Independant Distributor Notice</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-privacy" class="modal-overlay" onclick="closeModal('privacy')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('privacy')">&times;</button>
+            <h2 data-tr="link_privacy">Confidentialité</h2>
+            <p>Notre politique de confidentialité détaille comment nous traitons vos données...</p>
+        </div>
+    </div>
+    <div id="modal-terms" class="modal-overlay" onclick="closeModal('terms')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('terms')">&times;</button>
+            <h2 data-tr="link_terms">Conditions</h2>
+            <p>En utilisant ce site, vous acceptez nos conditions d'utilisation...</p>
+        </div>
+    </div>
+    <div id="modal-returns" class="modal-overlay" onclick="closeModal('returns')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('returns')">&times;</button>
+            <h2 data-tr="link_returns">Retours</h2>
+            <p>Nous offrons une garantie de remboursement de 60 jours...</p>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
