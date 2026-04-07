@@ -174,48 +174,190 @@
   }
   </script>
 
-  <style>
-    /* Floating Trust Badge Mobile */
-    .floating-badge {
-      display: none;
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #fff;
-      padding: 12px 16px;
-      border-radius: 50px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      z-index: 1000;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid var(--primary-light);
-      animation: slideInUp 0.5s ease-out;
+  <script>
+    const translations = {
+      fr: {
+        ann_1: "🔥 STOCK LIMITÉ : Jusqu'à 60% de réduction — Aujourd'hui Seulement",
+        ann_2: "Garantie Satisfait ou Remboursé 60 Jours — Sans Conditions",
+        ann_3: "LIVRAISON RAPIDE — Partout en France",
+        nav_benefits: "Avantages",
+        nav_howitworks: "Comment ça marche",
+        nav_reviews: "Avis",
+        nav_faq: "FAQ",
+        nav_cta: "Commander EcoWatt",
+        hero_badge: "Plus d'1 million de foyers dans le monde paient déjà moins cher",
+        hero_title: "Vous Perdez <span class=\"highlight\">Des Centaines d'Euros par An</span> à Cause de Votre Fournisseur d'Énergie — Et Il Compte Sur Votre Ignorance",
+        hero_sub1: "<strong>Chaque mois, votre compteur mesure de l'électricité que vous n'utilisez jamais réellement.</strong> On appelle ça l'« électricité sale » — des surtensions invisibles et des courants réactifs qui entrent dans votre maison, sont mesurés, puis disparaissent en chaleur dans vos murs. Vous payez la facture. Vos appareils n'en profitent pas. Votre fournisseur s'enrichit.",
+        hero_sub2: "La technologie brevetée E.S.T. d'EcoWatt est le seul appareil à brancher qui <strong>intercepte cette énergie gaspillée et la réinjecte dans vos circuits</strong> — ralentissant votre compteur, prolongeant la durée de vie de vos appareils et réduisant votre facture mensuelle. <strong>Sans électricien. Sans outils. Sans abonnement. Des résultats en 60 jours ou remboursé.</strong>",
+        hero_tag1: "Certifié CE & UL",
+        hero_tag2: "Zéro Entretien",
+        hero_tag3: "Essai 60 Jours Sans Risque",
+        hero_btn: "Arrêtez de Payer en Trop — Commander avec 60% de Réduction",
+        hero_guarantee: "<strong>Zéro risque.</strong> Si votre facture ne baisse pas dans les 60 jours, vous êtes intégralement remboursé. Pas de questions.",
+        trust_1_h: "Certifié CE & UL",
+        trust_1_s: "Double norme de segurança européenne et américaine",
+        trust_2_h: "Remboursement 60 Jours",
+        trust_2_s: "Intégral si vous n'économisez pas",
+        trust_3_h: "Installation en 10 secondes",
+        trust_3_s: "Branchez et c'est tout",
+        trust_4_h: "Note 4,7★",
+        trust_4_s: "+1 000 000 d'acheteurs vérifiés",
+        trust_5_h: "Compatible 220V",
+        trust_5_s: "Conçu pour le réseau électrique français",
+        stat_1_l: "Appareils Vendus dans le Monde",
+        stat_2_n: "Jusqu'à 30%",
+        stat_2_l: "De Réduction sur la Facture",
+        stat_3_l: "Note Moyenne Vérifiée",
+        stat_4_l: "Garantie Remboursement Total",
+        ben_label: "CE QUE VOTRE FOURNISSEUR D'ÉNERGIE NE VEUT PAS QUE VOUS SACHIEZ",
+        ben_title: "Votre Fournisseur d'Énergie a un Secret Inavouable — Et il vous Coûte des Centaines d'Euros Chaque Année",
+        ben_p1: "Pensez à la dernière fois que vous avez ouvert votre facture EDF, Engie ou TotalEnergies. <strong>Vous avez tout fait « comme il faut » — ampoules LED, thermostat programmable, appareils éteints.</strong> Et pourtant, la facture grimpe. 150€. 220€. 310€. Chaque mois, sans exception.",
+        ben_p2: "Voici la vérité que votre fournisseur ne dira jamais : <strong>jusqu'à 30% de l'électricité pompée dans votre foyer est si instable et « sale » que vos appareils ne peuvent pas l'utiliser.</strong> Ces surtensions erratiques, courants réactifs et pics de tension parcourent vos câbles, sont mesurés par votre compteur, puis se dissipent en chaleur dans vos murs. Vous en payez chaque watt. <strong>Aucun appareil n'en profite d'un seul volt.</strong>",
+        ben_p3: "EcoWatt est le seul aparelho qui <strong>se branche directement sur cette fuite financière et l'arrête net</strong>. Ses condensateurs industriels et filtres magnétiques interceptent le courant sale avant que votre compteur ne l'enregistre, le nettoient, le stabilisent et le réinjectent comme électricité propre et utilizável. <strong>Résultat : votre compteur ralentit. Vos appareils durent plus longtemps. Votre facture baisse — garanti.</strong>",
+        ben_urgency: "<strong>Stock limité en France.</strong> Plus d'1 million d'unités vendues — commandes en cours d'épuisement.",
+        ben_btn: "Récupérez Votre Argent — Commander EcoWatt avec 60% de Réduction",
+        rev_label: "DE VRAIES PERSONNES. DE VRAIES FACTURES. DE VRAIES ÉCONOMIES.",
+        rev_title: "« J'aurais Voulu Connaître EcoWatt Des Années Plus Tôt »",
+        rev_sub: "Ce ne sont pas des témoignages triés sur le volet. Ce sont des Français ordinaires — propriétaires, retraités et familles — qui en avaient assez de payer trop cher et ont décidé d'agir.",
+        rev_stat1_l: "Note Moyenne",
+        rev_stat2_l: "Unités Vendues",
+        rev_stat3_l: "Économies sur la Facture",
+        feat_label: "POURQUOI CET APPAREIL CHANGE TOUT",
+        feat_title: "6 Façons dont EcoWatt Attaque Votre Facture d'Électricité sous Tous les Angles — Simultanément",
+        feat_sub: "<strong>Un seul appareil. Protection de toute la maison. Des économies mesurables dès votre prochaine facture.</strong>",
+        feat_1_h: "Ralentit Votre Compteur — Légalement",
+        feat_1_d: "<strong>EcoWatt ne touche pas à votre câblage.</strong> Il capture l'électricité réactive gaspillée avant que votre compteur ne la comptabilise.",
+        feat_2_h: "Protège Vos Appareils",
+        feat_2_d: "Filtre les surtensions nocives et stabilise le flux électrique pour prolonger la vie de vos TV, frigos et ordinateurs.",
+        feat_3_h: "Installation Instantanée",
+        feat_3_d: "Aucun électricien requis. Branchez-le simplement dans n'importe quelle prise standard.",
+        feat_4_h: "Technologie E.S.T.",
+        feat_4_d: "La seule technologie brevetée capable de redresser les ondes de courant instables.",
+        feat_5_h: "Écologique & Durable",
+        feat_5_d: "Réduit le gaspillage énergétique global de votre foyer.",
+        feat_6_h: "Garantie Sans Risque",
+        feat_6_d: "Résultats garantis ou remboursement intégral sous 60 jours.",
+        sci_label: "LA TECHNOLOGIE QUI INQUIÈTE LES FOURNISSEURS D'ÉNERGIE",
+        sci_title: "Comment un Petit Appareil Met Fin au Plus Grand Coût Caché de Votre Foyer",
+        sci_sub: "<strong>Technologie Brevetée E.S.T. (Electricity Stabilizing Technology) — Une ingénierie sérieuse, des résultats mesurables</strong>",
+        sci_h3: "Le Processus en 3 Étapes qui Réduit Votre Facture Dès l'Instant où Vous le Branchez",
+        sci_step1_h: "Étape 1 : Stabilisation du Courant",
+        sci_step1_d: "Dès que vous le branchez, EcoWatt combine des condensateurs industriels pour stabiliser la tension de votre foyer, éliminant les pics dangereux.",
+        sci_step2_h: "Étape 2 : Élimination de l'Électricité Sale",
+        sci_step2_d: "Ses filtres magnétiques captent les courants réactifs et les surtensions invisibles qui font tourner votre compteur inutilement.",
+        sci_step3_h: "Étape 3 : Optimisation de la Consommation",
+        sci_step3_d: "L'énergie récupérée est réinjectée proprement, ce qui ralentit la vitesse de rotation de votre compteur de manière légale et sûre.",
+        faq_label: "LES QUESTIONS QUE 1 000 000 DE CLIENTS ONT POSÉES AVANT DE COMMANDER",
+        faq_title: "Tous Vos Doutes. Répondus Honnêtement.",
+        footer_desc: "EcoWatt France Distributeurs aide les foyers français à reprendre le contrôle de leurs factures d'énergie. Nous distribuons la technologie E.S.T. certifiée CE en France.",
+        footer_rights: "Tous droits réservés."
+      },
+      en: {
+        ann_1: "🔥 LIMITED STOCK: Up to 60% Discount — Today Only",
+        ann_2: "60-Day Money Back Guarantee — No Questions Asked",
+        ann_3: "FAST SHIPPING — Nationwide Delivery",
+        nav_benefits: "Benefits",
+        nav_howitworks: "How it Works",
+        nav_reviews: "Reviews",
+        nav_faq: "FAQ",
+        nav_cta: "Order EcoWatt",
+        hero_badge: "Over 1 million households worldwide are already paying less",
+        hero_title: "You Are Losing <span class=\"highlight\">Hundreds of Dollars per Year</span> Because of Your Power Supplier — And They're Counting on Your Ignorance",
+        hero_sub1: "<strong>Every month, your meter measures electricity you never actually use.</strong> It's called \"dirty electricity\" — invisible surges and reactive currents that enter your home, get measured, and then disappear as heat in your walls.",
+        hero_sub2: "EcoWatt's patented E.S.T. technology is the only plug-in device that <strong>intercepts this wasted energy and feeds it back into your circuits</strong> — slowing your meter and slashing your monthly bill.",
+        hero_tag1: "CE & UL Certified",
+        hero_tag2: "Zero Maintenance",
+        hero_tag3: "60-Day Risk-Free Trial",
+        hero_btn: "Stop Overpaying — Order with 60% Discount",
+        hero_guarantee: "<strong>Zero risk.</strong> If your bill doesn't drop within 60 days, you get a full refund.",
+        trust_1_h: "CE & UL Certified",
+        trust_1_s: "Dual European and US safety standards",
+        trust_2_h: "60-Day Refund",
+        trust_2_s: "Full refund if you don't save",
+        trust_3_h: "10-Second Install",
+        trust_3_s: "Just plug it in and that's it",
+        trust_4_h: "4.7★ Rating",
+        trust_4_s: "+1,000,000 verified buyers",
+        trust_5_h: "220V Compatible",
+        trust_5_s: "Designed for international power grids",
+        stat_1_l: "Devices Sold Worldwide",
+        stat_2_n: "Up to 30%",
+        stat_2_l: "Off Your Power Bill",
+        stat_3_l: "Avg Verified Rating",
+        stat_4_l: "Full Money Back Guarantee",
+        ben_label: "WHAT YOUR POWER SUPPLIER DOESN'T WANT YOU TO KNOW",
+        ben_title: "Your Power Supplier Has a Dark Secret — And It's Costing You Hundreds Every Year",
+        ben_p1: "Think about the last time you opened your electric bill. You did everything right, yet the bill keeps rising.",
+        ben_p2: "Here is the truth: up to 30% of the electricity pumped into your home is \"dirty\" and wasted. You pay for it, but don't use it.",
+        ben_p3: "EcoWatt is the only device that stops this leak. It stabilizes your power and slows down your meter legally.",
+        ben_urgency: "<strong>Limited stock available.</strong> Supplies are running low due to high demand.",
+        ben_btn: "Get Your Money Back — Order EcoWatt with 60% Off",
+        rev_label: "REAL PEOPLE. REAL BILLS. REAL SAVINGS.",
+        rev_title: "\"I Wish I Knew About EcoWatt Years Ago\"",
+        rev_sub: "Real testimonials from regular people who were tired of overpaying and took action.",
+        rev_stat1_l: "Average Rating",
+        rev_stat2_l: "Units Sold",
+        rev_stat3_l: "Savings on Bill",
+        feat_label: "WHY THIS DEVICE CHANGES EVERYTHING",
+        feat_title: "6 Ways EcoWatt Attacks Your Electric Bill From Every Angle — Simultaneously",
+        feat_sub: "<strong>One device. Whole home protection. Measurable savings by your next bill.</strong>",
+        feat_1_h: "Slows Down Your Meter — Legally",
+        feat_1_d: "<strong>EcoWatt doesn't touch your wiring.</strong> It captures wasted reactive power before your meter counts it.",
+        feat_2_h: "Protects Your Appliances",
+        feat_2_d: "Filters harmful surges and stabilizes electricity to prolong the life of your expensive electronics.",
+        feat_3_h: "Instant Installation",
+        feat_3_d: "No electrician required. Simply plug it into any standard outlet.",
+        feat_4_h: "E.S.T. Technology",
+        feat_4_d: "The only patented technology capable of correcting unstable power waves.",
+        feat_5_h: "Eco-Friendly",
+        feat_5_d: "Reduces overall energy waste in your household.",
+        feat_6_h: "Risk-Free Guarantee",
+        feat_6_d: "Guaranteed results or your money back within 60 days.",
+        sci_label: "THE TECH THAT WORRIES POWER COMPANIES",
+        sci_title: "How One Small Device Ends Your Home's Biggest Hidden Cost",
+        sci_sub: "<strong>Patented E.S.T. Technology (Electricity Stabilizing Technology) — Serious engineering, measurable results</strong>",
+        sci_h3: "The 3-Step Process That Lowers Your Bill The Moment You Plug It In",
+        sci_step1_h: "Step 1: Power Stabilization",
+        sci_step1_d: "The moment you plug it in, EcoWatt stabilizes your home's voltage, eliminating dangerous power spikes.",
+        sci_step2_h: "Step 2: Dirty Electricity Removal",
+        sci_step2_d: "Magnetic filters capture reactive currents that would otherwise spin your meter for no reason.",
+        sci_step3_h: "Step 3: Consumption Optimization",
+        sci_step3_d: "Recovered energy is fed back cleanly, legally slowing down your meter's rotation speed.",
+        faq_label: "QUESTIONS 1,000,000 CUSTOMERS ASKED BEFORE ORDERING",
+        faq_title: "All Your Doubts. Answered Honestly.",
+        footer_desc: "EcoWatt helps families worldwide reclaim control of their energy bills. We distribute certified E.S.T. technology globally.",
+        footer_rights: "All rights reserved."
+      }
+    };
+
+    function switchLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      // Toggle active state in dropdown
+      document.querySelectorAll('.lang-dropdown a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('onclick').includes(lang)) {
+          a.classList.add('active');
+        }
+      });
+      // Update toggle button flag
+      const flag = lang === 'fr' ? '🇫🇷' : '🇺🇸';
+      document.querySelector('.lang-toggle .flag').textContent = flag;
+      
+      // Persist choice
+      localStorage.setItem('preferred_lang', lang);
     }
-    @media (max-width: 767px) {
-      .floating-badge { display: flex; }
-    }
-    .floating-badge .badge-icon {
-      background: var(--primary);
-      color: #fff;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-    }
-    .floating-badge .badge-text {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--primary);
-      white-space: nowrap;
-    }
-    @keyframes slideInUp {
-      from { transform: translateY(100px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-  </style>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferred_lang') || 'fr';
+      if (savedLang !== 'fr') switchLanguage(savedLang);
+    });
+  </script>
+
 </head>
 <body>
 
@@ -226,29 +368,29 @@
       <!-- Original items -->
       <div class="alert-badge">
         <i class="fa-solid fa-bolt-lightning" aria-hidden="true"></i>
-        <strong>🔥 STOCK LIMITÉ : Jusqu'à 60% de réduction — Aujourd'hui Seulement</strong>
+        <strong data-i18n="ann_1">🔥 STOCK LIMITÉ : Jusqu'à 60% de réduction — Aujourd'hui Seulement</strong>
       </div>
       <div class="alert-badge">
         <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-        <strong>Garantie Satisfait ou Remboursé 30 Jours — Sans Conditions</strong>
+        <strong data-i18n="ann_2">Garantie Satisfait ou Remboursé 60 Jours — Sans Conditions</strong>
       </div>
       <div class="alert-badge">
         <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
-        <strong>LIVRAISON RAPIDE — Partout en France</strong>
+        <strong data-i18n="ann_3">LIVRAISON RAPIDE — Partout en France</strong>
       </div>
 
       <!-- Duplicate for seamless loop (mobile only) -->
       <div class="alert-badge mobile-duplicate" aria-hidden="true">
         <i class="fa-solid fa-bolt-lightning" aria-hidden="true"></i>
-        <strong>🔥 STOCK LIMITÉ : Jusqu'à 60% de réduction — Aujourd'hui Seulement</strong>
+        <strong data-i18n="ann_1">🔥 STOCK LIMITÉ : Jusqu'à 60% de réduction — Aujourd'hui Seulement</strong>
       </div>
       <div class="alert-badge mobile-duplicate" aria-hidden="true">
         <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-        <strong>Garantie Satisfait ou Remboursé 30 Jours — Sans Conditions</strong>
+        <strong data-i18n="ann_2">Garantie Satisfait ou Remboursé 60 Jours — Sans Conditions</strong>
       </div>
       <div class="alert-badge mobile-duplicate" aria-hidden="true">
         <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
-        <strong>LIVRAISON RAPIDE — Partout en France</strong>
+        <strong data-i18n="ann_3">LIVRAISON RAPIDE — Partout en France</strong>
       </div>
 
     </div>
@@ -262,10 +404,10 @@
       <img src="images/logo-ecowatt.png" alt="EcoWatt" width="160" height="56" style="display:block;height:56px;width:auto;" />
     </a>
     <nav class="nav-links" aria-label="Navigation principale">
-      <a href="#benefits">Avantages</a>
-      <a href="#how-it-works">Comment ça marche</a>
-      <a href="#reviews">Avis</a>
-      <a href="#faq">FAQ</a>
+      <a href="#benefits" data-i18n="nav_benefits">Avantages</a>
+      <a href="#how-it-works" data-i18n="nav_howitworks">Comment ça marche</a>
+      <a href="#reviews" data-i18n="nav_reviews">Avis</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </nav>
 
     <!-- Language Selector -->
@@ -275,13 +417,13 @@
         <i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="lang-dropdown">
-        <a href="#" class="active"><span class="flag">🇫🇷</span> Français</a>
-        <a href="#"><span class="flag">🇺🇸</span> English</a>
+        <a href="javascript:void(0)" class="active" onclick="switchLanguage('fr')"><span class="flag">🇫🇷</span> Français</a>
+        <a href="javascript:void(0)" onclick="switchLanguage('en')"><span class="flag">🇺🇸</span> English</a>
       </div>
     </div>
 
     <div class="nav-cta">
-      <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary">
+      <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary" data-i18n="nav_cta">
         <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
         Commander EcoWatt
       </a>
@@ -293,28 +435,28 @@
 <section id="hero" aria-labelledby="hero-h1">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge">
+      <div class="hero-badge" data-i18n="hero_badge">
         <i class="fa-solid fa-award" aria-hidden="true"></i>
         Plus d'1 million de foyers dans le monde paient déjà moins cher
       </div>
-      <h1 id="hero-h1">
+      <h1 id="hero-h1" data-i18n="hero_title">
         Vous Perdez <span class="highlight">Des Centaines d'Euros par An</span> à Cause de Votre Fournisseur d'Énergie — Et Il Compte Sur Votre Ignorance
       </h1>
-      <p class="hero-subtext"><strong>Chaque mois, votre compteur mesure de l'électricité que vous n'utilisez jamais réellement.</strong> On appelle ça l'« électricité sale » — des surtensions invisibles et des courants réactifs qui entrent dans votre maison, sont mesurés, puis disparaissent en chaleur dans vos murs. Vous payez la facture. Vos appareils n'en profitent pas. Votre fournisseur s'enrichit.</p>
-      <p class="hero-subtext">La technologie brevetée E.S.T. d'EcoWatt est le seul appareil à brancher qui <strong>intercepte cette énergie gaspillée et la réinjecte dans vos circuits</strong> — ralentissant votre compteur, prolongeant la durée de vie de vos appareils et réduisant votre facture mensuelle. <strong>Sans électricien. Sans outils. Sans abonnement. Des résultats en 30 jours ou remboursé.</strong></p>
+      <p class="hero-subtext" data-i18n="hero_sub1"><strong>Chaque mois, votre compteur mesure de l'électricité que vous n'utilisez jamais réellement.</strong> On appelle ça l'« électricité sale » — des surtensions invisibles et des courants réactifs qui entrent dans votre maison, sont mesurés, puis disparaissent en chaleur dans vos murs. Vous payez la facture. Vos appareils n'en profitent pas. Votre fournisseur s'enrichit.</p>
+      <p class="hero-subtext" data-i18n="hero_sub2">La technologie brevetée E.S.T. d'EcoWatt est le seul appareil à brancher qui <strong>intercepte cette énergie gaspillée et la réinjecte dans vos circuits</strong> — ralentissant votre compteur et réduisant votre facture mensuelle. <strong>Sans électricien. Sans outils. Sans abonnement. Des résultats en 60 jours ou remboursé.</strong></p>
       <div class="hero-tagline">
-        <span><i class="fa-solid fa-certificate" aria-hidden="true"></i> Certifié CE &amp; UL</span>
-        <span><i class="fa-solid fa-leaf" aria-hidden="true"></i> Zéro Entretien</span>
-        <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Essai 30 Jours Sans Risque</span>
+        <span data-i18n="hero_tag1"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Certifié CE &amp; UL</span>
+        <span data-i18n="hero_tag2"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Zéro Entretien</span>
+        <span data-i18n="hero_tag3"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Essai 60 Jours Sans Risque</span>
       </div>
       <div class="hero-cta-group">
-        <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary">
+        <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary" data-i18n="hero_btn">
           <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
           Arrêtez de Payer en Trop — Commander avec 60% de Réduction
         </a>
-        <p class="hero-guarantee">
+        <p class="hero-guarantee" data-i18n="hero_guarantee">
           <i class="fa-solid fa-lock" aria-hidden="true"></i>
-          <span><strong>Zéro risque.</strong> Si votre facture ne baisse pas dans les 30 jours, vous êtes intégralement remboursé. Pas de questions.</span>
+          <span><strong>Zéro risque.</strong> Si votre facture ne baisse pas dans les 60 jours, vous êtes intégralement remboursé. Pas de questions.</span>
         </p>
       </div>
     </div>
@@ -340,8 +482,8 @@
           <i class="fa-solid fa-medal" aria-hidden="true"></i>
         </div>
         <div class="trust-badge-text">
-          <strong>Certifié CE &amp; UL</strong>
-          <span>Double norme de sécurité européenne et américaine</span>
+          <strong data-i18n="trust_1_h">Certifié CE &amp; UL</strong>
+          <span data-i18n="trust_1_s">Double norme de sécurité européenne et américaine</span>
         </div>
       </div>
 
@@ -350,8 +492,8 @@
           <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
         </div>
         <div class="trust-badge-text">
-          <strong>Remboursement 30 Jours</strong>
-          <span>Intégral si vous n'économisez pas</span>
+          <strong data-i18n="trust_2_h">Remboursement 60 Jours</strong>
+          <span data-i18n="trust_2_s">Intégral si vous n'économisez pas</span>
         </div>
       </div>
 
@@ -360,8 +502,8 @@
           <i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i>
         </div>
         <div class="trust-badge-text">
-          <strong>Installation en 10 secondes</strong>
-          <span>Branchez et c'est tout</span>
+          <strong data-i18n="trust_3_h">Installation en 10 secondes</strong>
+          <span data-i18n="trust_3_s">Branchez et c'est tout</span>
         </div>
       </div>
 
@@ -370,8 +512,8 @@
           <i class="fa-solid fa-star" aria-hidden="true"></i>
         </div>
         <div class="trust-badge-text">
-          <strong>Note 4,7★</strong>
-          <span>+1 000 000 d'acheteurs vérifiés</span>
+          <strong data-i18n="trust_4_h">Note 4,7★</strong>
+          <span data-i18n="trust_4_s">+1 000 000 d'acheteurs vérifiés</span>
         </div>
       </div>
 
@@ -380,8 +522,8 @@
           <i class="fa-solid fa-bolt" aria-hidden="true"></i>
         </div>
         <div class="trust-badge-text">
-          <strong>Compatible 220V</strong>
-          <span>Conçu pour le réseau électrique français</span>
+          <strong data-i18n="trust_5_h">Compatible 220V</strong>
+          <span data-i18n="trust_5_s">Conçu pour le réseau électrique français</span>
         </div>
       </div>
 
@@ -396,25 +538,25 @@
 
       <div class="stat-item">
         <div class="stat-number">1 000 000+</div>
-        <div class="stat-label">Appareils Vendus dans le Monde</div>
+        <div class="stat-label" data-i18n="stat_1_l">Appareils Vendus dans le Monde</div>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
 
       <div class="stat-item">
-        <div class="stat-number">Jusqu'à 30%</div>
-        <div class="stat-label">De Réduction sur la Facture</div>
+        <div class="stat-number" data-i18n="stat_2_n">Jusqu'à 30%</div>
+        <div class="stat-label" data-i18n="stat_2_l">De Réduction sur la Facture</div>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
 
       <div class="stat-item">
         <div class="stat-number">4,7★</div>
-        <div class="stat-label">Note Moyenne Vérifiée</div>
+        <div class="stat-label" data-i18n="stat_3_l">Note Moyenne Vérifiée</div>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
 
       <div class="stat-item">
-        <div class="stat-number">30 Jours</div>
-        <div class="stat-label">Garantie Remboursement Total</div>
+        <div class="stat-number">60 Jours</div>
+        <div class="stat-label" data-i18n="stat_4_l">Garantie Remboursement Total</div>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
 
@@ -427,20 +569,20 @@
   <div class="container">
     <div class="benefits-layout">
       <div class="benefits-text">
-        <div class="section-label">CE QUE VOTRE FOURNISSEUR D'ÉNERGIE NE VEUT PAS QUE VOUS SACHIEZ</div>
-        <h2 id="benefits-h2" class="section-h2">Votre Fournisseur d'Énergie a un Secret Inavouable — Et il vous Coûte des Centaines d'Euros Chaque Année</h2>
+        <div class="section-label" data-i18n="ben_label">CE QUE VOTRE FOURNISSEUR D'ÉNERGIE NE VEUT PAS QUE VOUS SACHIEZ</div>
+        <h2 id="benefits-h2" class="section-h2" data-i18n="ben_title">Votre Fournisseur d'Énergie a un Secret Inavouable — Et il vous Coûte des Centaines d'Euros Chaque Année</h2>
 
-        <p class="section-body">Pensez à la dernière fois que vous avez ouvert votre facture EDF, Engie ou TotalEnergies. <strong>Vous avez tout fait « comme il faut » — ampoules LED, thermostat programmable, appareils éteints.</strong> Et pourtant, la facture grimpe. 150€. 220€. 310€. Chaque mois, sans exception.</p>
+        <p class="section-body" data-i18n="ben_p1">Pensez à la dernière fois que vous avez ouvert votre facture EDF, Engie ou TotalEnergies. <strong>Vous avez tout fait « comme il faut » — ampoules LED, thermostat programmable, appareils éteints.</strong> Et pourtant, la facture grimpe. 150€. 220€. 310€. Chaque mois, sans exception.</p>
 
-        <p class="section-body">Voici la vérité que votre fournisseur ne dira jamais : <strong>jusqu'à 30% de l'électricité pompée dans votre foyer est si instable et « sale » que vos appareils ne peuvent pas l'utiliser.</strong> Ces surtensions erratiques, courants réactifs et pics de tension parcourent vos câbles, sont mesurés par votre compteur, puis se dissipent en chaleur dans vos murs. Vous en payez chaque watt. <strong>Aucun appareil n'en profite d'un seul volt.</strong></p>
+        <p class="section-body" data-i18n="ben_p2">Voici la vérité que votre fournisseur ne dira jamais : <strong>jusqu'à 30% de l'électricité pompée dans votre foyer est si instable et « sale » que vos appareils ne peuvent pas l'utiliser.</strong> Ces surtensions erratiques, courants réactifs et pics de tension parcourent vos câbles, sont mesurés par votre compteur, puis se dissipent en chaleur dans vos murs. Vous en payez chaque watt. <strong>Aucun appareil n'en profite d'un seul volt.</strong></p>
 
-        <p class="section-body">EcoWatt est le seul appareil qui <strong>se branche directement sur cette fuite financière et l'arrête net</strong>. Ses condensateurs industriels et filtres magnétiques interceptent le courant sale avant que votre compteur ne l'enregistre, le nettoient, le stabilisent et le réinjectent comme électricité propre et utilisable. <strong>Résultat : votre compteur ralentit. Vos appareils durent plus longtemps. Votre facture baisse — garanti.</strong></p>
+        <p class="section-body" data-i18n="ben_p3">EcoWatt est le seul appareil qui <strong>se branche directement sur cette fuite financière et l'arrête net</strong>. Ses condensateurs industriels et filtres magnétiques interceptent le courant sale avant que votre compteur ne l'enregistre, le nettoient, le stabilisent et le réinjectent comme électricité propre et utilisable. <strong>Résultat : votre compteur ralentit. Vos appareils durent plus longtemps. Votre facture baisse — garanti.</strong></p>
 
         <div class="urgency-badge">
           <i class="fa-solid fa-fire" aria-hidden="true"></i>
-          <span><strong>Stock limité en France.</strong> Plus d'1 million d'unités vendues — commandes en cours d'épuisement.</span>
+          <span data-i18n="ben_urgency"><strong>Stock limité en France.</strong> Plus d'1 million d'unités vendues — commandes en cours d'épuisement.</span>
         </div>
-        <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary">
+        <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary" data-i18n="ben_btn">
           <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
           Récupérez Votre Argent — Commander EcoWatt avec 60% de Réduction
         </a>
@@ -460,11 +602,25 @@
 
 <section id="reviews" aria-labelledby="reviews-h2">
   <div class="container">
-    <div class="reviews-header">
-      <div class="section-label">DE VRAIES PERSONNES. DE VRAIES FACTURES. DE VRAIES ÉCONOMIES.</div>
-      <h2 id="reviews-h2" class="section-h2">« J'aurais Voulu Connaître EcoWatt Des Années Plus Tôt »</h2>
-      <p class="reviews-subheadline">Ce ne sont pas des témoignages triés sur le volet. Ce sont des Français ordinaires — propriétaires, retraités et familles — qui en avaient assez de payer trop cher et ont décidé d'agir.</p>
+    <div class="section-label" data-i18n="rev_label">DE VRAIES PERSONNES. DE VRAIES FACTURES. DE VRAIES ÉCONOMIES.</div>
+    <h2 id="reviews-h2" class="section-h2" data-i18n="rev_title">« J'aurais Voulu Connaître EcoWatt Des Années Plus Tôt »</h2>
+    <p class="section-subtext" data-i18n="rev_sub">Ce ne sont pas des témoignages triés sur le volet. Ce sont des Français ordinaires — propriétaires, retraités et familles — qui en avaient assez de payer trop cher et ont décidé d'agir.</p>
+
+    <div class="reviews-stats">
+      <div class="rev-stat">
+        <div class="rev-stat-val">4.7/5</div>
+        <div class="rev-stat-lab" data-i18n="rev_stat1_l">Note Moyenne</div>
+      </div>
+      <div class="rev-stat">
+        <div class="rev-stat-val">1M+</div>
+        <div class="rev-stat-lab" data-i18n="rev_stat2_l">Unités Vendues</div>
+      </div>
+      <div class="rev-stat">
+        <div class="rev-stat-val">-30%</div>
+        <div class="rev-stat-lab" data-i18n="rev_stat3_l">Économies sur la Facture</div>
+      </div>
     </div>
+
     <!-- Infinite scrolling reviews marquee -->
     <div class="reviews-marquee-wrap" aria-label="Témoignages clients">
       <div class="reviews-track">
@@ -569,87 +725,52 @@
 
       </div>
     </div>
-    <div class="reviews-stats">
-
-      <div class="review-stat">
-        <div class="number">4,7★</div>
-        <div class="label">Note Moyenne</div>
-      </div>
-
-      <div class="review-stat">
-        <div class="number">1 000 000+</div>
-        <div class="label">Unités Vendues</div>
-      </div>
-
-      <div class="review-stat">
-        <div class="number">Jusqu'à 30%</div>
-        <div class="label">Économies sur la Facture</div>
-      </div>
-
-    </div>
   </div>
 </section>
 
 
 <section id="features" aria-labelledby="features-h2">
   <div class="container">
-    <div class="features-header">
-      <div class="section-label">POURQUOI CET APPAREIL CHANGE TOUT</div>
-      <h2 id="features-h2" class="section-h2">6 Façons dont EcoWatt Attaque Votre Facture d'Électricité sous Tous les Angles — Simultanément</h2>
-      <p class="reviews-subheadline" style="margin-top: 12px; font-size: 1rem; color: var(--text-muted);">
-        <strong>Un seul appareil. Protection de toute la maison. Des économies mesurables dès votre prochaine facture.</strong>
-      </p>
-    </div>
+    <div class="section-label" data-i18n="feat_label">POURQUOI CET APPAREIL CHANGE TOUT</div>
+    <h2 id="features-h2" class="section-h2" data-i18n="feat_title">6 Façons dont EcoWatt Attaque Votre Facture d'Électricité sous Tous les Angles — Simultanément</h2>
+    <p class="section-subtext" data-i18n="feat_sub"><strong>Un seul appareil. Protection de toute la maison. Des économies mesurables dès votre prochaine facture.</strong></p>
+
     <div class="features-grid">
 
       <div class="feature-card">
-        <div class="feature-icon-wrap">
-          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
-        </div>
-        <div class="feature-title">Fait Ralentir Votre Compteur — Légalement</div>
-        <p class="feature-desc"><strong>EcoWatt ne touche pas à votre câblage.</strong> Il capture l'électricité réactive gaspillée avant que votre compteur ne la comptabilise. Moins de consommation mesurée = une facture significativement plus basse. <strong>Résultats visibles dès votre prochain relevé.</strong></p>
+        <div class="feat-icon"><i class="fa-solid fa-gauge-simple-high"></i></div>
+        <h3 data-i18n="feat_1_h">Ralentit Votre Compteur — Légalement</h3>
+        <p data-i18n="feat_1_d"><strong>EcoWatt ne touche pas à votre câblage.</strong> Il capture l'électricité réactive gaspillée avant que votre compteur ne la comptabilise.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon-wrap">
-          <i class="fa-solid fa-medal" aria-hidden="true"></i>
-        </div>
-        <div class="feature-title">Certifié CE &amp; UL — Double Norme de Sécurité</div>
-        <p class="feature-desc">Le même organisme indépendant qui certifie vos smartphones et électroménagers a <strong>rigoureusement testé et certifié EcoWatt</strong>. 100% légal, 100% sûr et 100% conforme aux normes françaises et européennes.</p>
+        <div class="feat-icon"><i class="fa-solid fa-plug-circle-check"></i></div>
+        <h3 data-i18n="feat_2_h">Protège Vos Appareils</h3>
+        <p data-i18n="feat_2_d">Filtre les surtensions nocives et stabilise le flux électrique pour prolonger la vie de vos TV, frigos et ordinateurs.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon-wrap">
-          <i class="fa-solid fa-filter" aria-hidden="true"></i>
-        </div>
-        <div class="feature-title">Élimine l'Électricité Sale et les Interférences EMF</div>
-        <p class="feature-desc">Chaque fois que votre chaudière, réfrigérateur ou lave-linge se met en marche, il crée des interférences électriques qui <strong>gonflent votre facture sans alimenter une seule ampoule</strong>. EcoWatt élimine ce bruit à la source.</p>
+        <div class="feat-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3 data-i18n="feat_3_h">Installation Instantanée</h3>
+        <p data-i18n="feat_3_d">Aucun électricien requis. Branchez-le simplement dans n'importe quelle prise standard.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon-wrap">
-          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-        </div>
-        <div class="feature-title">Protège Silencieusement Vos Appareils</div>
-        <p class="feature-desc">Additionnez votre réfrigérateur, lave-linge, télévision et ordinateurs. <strong>Des milliers d'euros d'équipements se détériorent lentement à cause de pics de tension invisibles.</strong> EcoWatt absorbe chaque surtension avant qu'elle n'atteigne vos appareils.</p>
+        <div class="feat-icon"><i class="fa-solid fa-microchip"></i></div>
+        <h3 data-i18n="feat_4_h">Technologie E.S.T.</h3>
+        <p data-i18n="feat_4_d">La seule technologie brevetée capable de redresser les ondes de courant instables.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon-wrap">
-          <i class="fa-solid fa-plug" aria-hidden="true"></i>
-        </div>
-        <div class="feature-title">Installation</div>
-        <h3>Stabilisation Instantanée Certifiée CE</h3>
-        <p class="feature-desc">EcoWatt est 100% compatible avec les <strong>Compteurs Linky</strong> et les anciennes installations. Sa technologie E.S.T. (Electricity Stabilization Technology) agit directement sur le flux électrique entrant pour éliminer les pics de tension qui font grimper votre facture inutilement.</p>
-        <p class="feature-desc"><strong>Branchez-le dans une prise 220V. Le voyant vert s'allume. C'est terminé.</strong> Pas d'outils, pas de câblage, pas d'intervention coûteuse. EcoWatt fonctionne silencieusement 24h/24, sans aucun entretien.</p>
+        <div class="feat-icon"><i class="fa-solid fa-leaf"></i></div>
+        <h3 data-i18n="feat_5_h">Écologique &amp; Durable</h3>
+        <p data-i18n="feat_5_d">Réduit le gaspillage énergétique global de votre foyer.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon-wrap">
-          <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-        </div>
-        <div class="feature-title">Se Rentabilise en Quelques Semaines</div>
-        <p class="feature-desc">Avec des économies constatées sur la facture, <strong>EcoWatt rembourse rapidement son prix d'achat</strong>. Et s'il ne réduit pas votre facture dans les 30 jours ? <strong>Remboursement intégral. Sans questions.</strong></p>
+        <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3 data-i18n="feat_6_h">Garantie Sans Risque</h3>
+        <p data-i18n="feat_6_d">Résultats garantis ou remboursement intégral sous 60 jours.</p>
       </div>
 
     </div>
@@ -665,14 +786,42 @@
 
 <section id="science" aria-labelledby="science-h2">
   <div class="container">
-    <div class="features-header">
-      <div class="section-label">LA TECHNOLOGIE QUI INQUIÈTE LES FOURNISSEURS D'ÉNERGIE</div>
-      <h2 id="science-h2" class="section-h2">Comment un Petit Appareil Met Fin au Plus Grand Coût Caché de Votre Foyer</h2>
-      <p class="reviews-subheadline" style="margin-top: 12px; font-size: 1rem; color: var(--text-muted);">
-        <strong>Technologie Brevetée E.S.T. (Electricity Stabilizing Technology) — Une ingénierie sérieuse, des résultats mesurables</strong>
-      </p>
-    </div>
-    <div class="benefits-layout">
+    <div class="science-layout">
+      <div class="science-text">
+        <div class="section-label" data-i18n="sci_label">LA TECHNOLOGIE QUI INQUIÈTE LES FOURNISSEURS D'ÉNERGIE</div>
+        <h2 id="science-h2" class="section-h2" data-i18n="sci_title">Comment un Petit Appareil Met Fin au Plus Grand Coût Caché de Votre Foyer</h2>
+        <p class="section-subtext" data-i18n="sci_sub"><strong>Technologie Brevetée E.S.T. (Electricity Stabilizing Technology) — Une ingénierie sérieuse, des résultats mesurables</strong></p>
+
+        <h3 data-i18n="sci_h3">Le Processus en 3 Étapes qui Réduit Votre Facture Dès l'Instant où Vous le Branchez</h3>
+
+        <div class="science-steps">
+          <div class="sci-step">
+            <div class="sci-step-num">1</div>
+            <div class="sci-step-content">
+              <h4 data-i18n="sci_step1_h">Étape 1 : Stabilisation du Courant</h4>
+              <p data-i18n="sci_step1_d">Dès que vous le branchez, EcoWatt combine des condensateurs industriels pour stabiliser la tension de votre foyer, éliminant les pics dangereux.</p>
+            </div>
+          </div>
+          <div class="sci-step">
+            <div class="sci-step-num">2</div>
+            <div class="sci-step-content">
+              <h4 data-i18n="sci_step2_h">Étape 2 : Élimination de l'Électricité Sale</h4>
+              <p data-i18n="sci_step2_d">Ses filtres magnétiques captent les courants réactifs et les surtensions invisibles qui font tourner votre compteur inutilement.</p>
+            </div>
+          </div>
+          <div class="sci-step">
+            <div class="sci-step-num">3</div>
+            <div class="sci-step-content">
+              <h4 data-i18n="sci_step3_h">Étape 3 : Optimisation de la Consommation</h4>
+              <p data-i18n="sci_step3_d">L'énergie récupérée est réinjectée proprement, ce qui ralentit la vitesse de rotation de votre compteur de manière légale et sûre.</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary" style="margin-top: 24px;">
+          <i class="fa-solid fa-flask" aria-hidden="true"></i>
+          Essayer EcoWatt — Réduction 60% Disponible Maintenant
+        </a>
+      </div>
       <div class="benefits-img">
         <img
           src="images/power-stabilizer.png"
@@ -680,32 +829,6 @@
           width="600" height="600"
           loading="lazy"
         />
-      </div>
-      <div class="benefits-text">
-        <h3 class="section-h2">Le Processus en 3 Étapes qui Réduit Votre Facture Dès l'Instant où Vous le Branchez</h3>
-
-        <p class="section-body">
-          <strong style="color: var(--primary);">Étape 1 : Intercepter l'Énergie Gaspillée Avant qu'elle Atteigne Votre Compteur</strong><br/>
-          L'électricité du réseau arrive chaotique et chargée de « bruit » invisible. <strong>Les condensateurs industriels d'EcoWatt interceptent ce flux erratique dès qu'il entre dans votre foyer</strong>, le filtrant en courant propre et stable que votre compteur ne peut pas sur-mesurer. Comme un point de contrôle à votre porte d'entrée — rien de gaspillé ne passe.
-        </p>
-
-        <p class="section-body">
-          <strong style="color: var(--primary);">Étape 2 : Éliminer les Micro-Surtensions qui Détruisent Vos Appareils</strong><br/>
-          <strong>Chaque gros appareil qui se met en marche envoie un pic de tension violent dans votre câblage.</strong> Ces pics endommagent les cartes électroniques, réduisent la durée de vie des appareils et ajoutent des frais fantômes à votre facture. EcoWatt absorbe chaque pic en millisecondes, avant qu'il n'atteigne une seule prise.
-        </p>
-
-        <p class="section-body">
-          <strong style="color: var(--primary);">Étape 3 : Récupérer l'Énergie Réactive qui Fuit dans Vos Murs en ce Moment</strong><br/>
-          <strong>L'énergie réactive — l'électricité trop instable pour alimenter vos appareils — s'échappe normalement en chaleur dans vos murs pendant que votre compteur vous facture chaque watt.</strong> EcoWatt capture cette énergie, la stabilise et la remet en circulation dans vos circuits comme électricité utilisable.
-        </p>
-
-        <p class="section-body" style="margin-top: 20px; padding: 16px; background: var(--primary-light); border-radius: 8px;">
-          <strong>L'effet net : votre fournisseur mesure une consommation significativement moindre. Vos appareils fonctionnent mieux. Et votre facture baisse — dès votre prochain relevé.</strong>
-        </p>
-        <a href="https://www.fasttrack37.com/PM7HK3TH/2QXQB9J8/?uid=47627" class="btn-primary" style="margin-top: 24px;">
-          <i class="fa-solid fa-flask" aria-hidden="true"></i>
-          Essayer EcoWatt — Réduction 60% Disponible Maintenant
-        </a>
       </div>
     </div>
   </div>
@@ -715,8 +838,8 @@
 <section id="faq" aria-labelledby="faq-h2">
   <div class="container">
     <div class="faq-header">
-      <div class="section-label">LES QUESTIONS QUE 1 000 000 DE CLIENTS ONT POSÉES AVANT DE COMMANDER</div>
-      <h2 id="faq-h2" class="section-h2">Tous Vos Doutes. Répondus Honnêtement.</h2>
+      <div class="section-label" data-i18n="faq_label">LES QUESTIONS QUE 1 000 000 DE CLIENTS ONT POSÉES AVANT DE COMMANDER</div>
+      <h2 id="faq-h2" class="section-h2" data-i18n="faq_title">Tous Vos Doutes. Répondus Honnêtement.</h2>
     </div>
     <div class="faq-list" role="list">
 
@@ -776,7 +899,7 @@
           <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
         </button>
         <div class="faq-answer">
-          <p>Il n'y a aucun piège. <strong>Si vous ne constatez pas une réduction mesurable de votre facture dans les 30 jours, nous vous remboursons intégralement.</strong> Vous n'avez même pas à retourner l'appareil dans la plupart des cas. Nous pouvons faire cette offre parce qu'EcoWatt fonctionne pour la grande majorité des foyers — surtout ceux qui paient 100€/mois ou plus. <strong>Les économies sont pratiquement garanties.</strong></p>
+          <p>Il n'y a aucun piège. <strong>Si vous ne constatez pas une réduction mesurable de votre facture dans les 60 jours, nous vous remboursons intégralement.</strong> Vous n'avez même pas à retourner l'appareil dans la plupart des cas. Nous pouvons faire cette offre parce qu'EcoWatt fonctionne pour la grande majorité des foyers — surtout ceux qui paient 100€/mois ou plus. <strong>Les économies sont pratiquement garanties.</strong></p>
         </div>
       </div>
 
@@ -816,7 +939,7 @@
           <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
         </button>
         <div class="faq-answer">
-          <p>Internet est inondé de <strong>contrefaçons qui ressemblent exactement à EcoWatt mais ne contiennent aucune technologie réelle</strong> — juste une LED verte dans une coque plastique. Certaines sont même dangereuses. <strong>La seule façon de recevoir l'EcoWatt authentique avec la technologie E.S.T., la certification CE &amp; UL et la garantie 30 jours est via la page officielle.</strong></p>
+          <p>Internet est inondé de <strong>contrefaçons qui ressemblent exactement à EcoWatt mais ne contiennent aucune technologie réelle</strong> — juste une LED verte dans une coque plastique. Certaines sont même dangereuses. <strong>La seule façon de recevoir l'EcoWatt authentique avec la technologie E.S.T., la certification CE &amp; UL et la garantie 60 jours est via la page officielle.</strong></p>
         </div>
       </div>
 
@@ -994,11 +1117,7 @@
   });
 </script>
 
-<!-- Floating Trust Badge -->
-<div class="floating-badge" id="floating-badge">
-  <div class="badge-icon"><i class="fa-solid fa-shield-check"></i></div>
-  <div class="badge-text">Garantie 30 Jours</div>
-</div>
+<!-- Floating Badge Removed per User Request -->
 
 </body>
 </html>
