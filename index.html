@@ -174,6 +174,48 @@
   }
   </script>
 
+  <style>
+    /* Floating Trust Badge Mobile */
+    .floating-badge {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #fff;
+      padding: 12px 16px;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 1000;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--primary-light);
+      animation: slideInUp 0.5s ease-out;
+    }
+    @media (max-width: 767px) {
+      .floating-badge { display: flex; }
+    }
+    .floating-badge .badge-icon {
+      background: var(--primary);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+    .floating-badge .badge-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    @keyframes slideInUp {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -217,7 +259,7 @@
 <header id="header" role="navigation">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="EcoWatt Accueil">
-      <img src="images/logo-ecowatt.png" alt="EcoWatt" style="display:block;height:56px;width:auto;" />
+      <img src="images/logo-ecowatt.png" alt="EcoWatt" width="160" height="56" style="display:block;height:56px;width:auto;" />
     </a>
     <nav class="nav-links" aria-label="Navigation principale">
       <a href="#benefits">Avantages</a>
@@ -429,7 +471,7 @@
 
         <!-- Original cards -->
         <div class="review-card">
-          <div class="review-image"><img src="images/review-kevin.webp" alt="Kevin H." loading="lazy" /></div>
+          <div class="review-image"><img src="images/review-kevin.webp" alt="Kevin H." width="64" height="64" loading="lazy" /></div>
           <div class="review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
           <p class="review-body">« Je payais <strong>248€ par mois en été</strong>. Mon voisin m'a parlé d'EcoWatt et j'ai failli ne pas essayer. Mais j'ai branché deux appareils et dès la première facture j'étais à <strong>189€</strong>. La suivante : <strong>174€</strong>. J'économise près de 75€ par mois. C'est plus de 900€ par an. »</p>
           <div class="reviewer-name">Kevin H.</div>
@@ -441,7 +483,7 @@
         </div>
 
         <div class="review-card">
-          <div class="review-image"><img src="images/review-melisa.webp" alt="Mélissa B." loading="lazy" /></div>
+          <div class="review-image"><img src="images/review-melisa.webp" alt="Mélissa B." width="64" height="64" loading="lazy" /></div>
           <div class="review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
           <p class="review-body">« Mon conseiller EDF m'a <strong>littéralement appelée pour savoir si j'avais déménagé</strong> tellement ma consommation a chuté. Mois 1 : <strong>42€ économisés</strong>. Mois 2 : <strong>58€</strong>. Mois 3 : <strong>64€</strong>. Vous laissez de l'argent sur la table chaque mois. »</p>
           <div class="reviewer-name">Mélissa B.</div>
@@ -453,7 +495,7 @@
         </div>
 
         <div class="review-card">
-          <div class="review-image"><img src="images/review-wilma.webp" alt="Wilma D." loading="lazy" /></div>
+          <div class="review-image"><img src="images/review-wilma.webp" alt="Wilma D." width="64" height="64" loading="lazy" /></div>
           <div class="review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
           <p class="review-body">« J'ai acheté le pack de 3. <strong>Notre facture de 312€ est passée à 221€ le mois suivant.</strong> C'est 91€ d'économies chaque mois — en une année, c'est plus de 1 000€. <strong>Le retour sur investissement est absolument fou.</strong> »</p>
           <div class="reviewer-name">Wilma D.</div>
@@ -465,7 +507,7 @@
         </div>
 
         <div class="review-card">
-          <div class="review-image"><img src="images/review-brenda.webp" alt="Brigitte S." loading="lazy" /></div>
+          <div class="review-image"><img src="images/review-brenda.webp" alt="Brigitte S." width="64" height="64" loading="lazy" /></div>
           <div class="review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
           <p class="review-body">« Je suis retraitée avec une pension fixe. <strong>Ma facture est passée de 187€ à 134€ le premier mois.</strong> Sur six mois, j'économise en moyenne 51€ par mois. Pour quelqu'un à la retraite, <strong>c'est de l'argent concret.</strong> »</p>
           <div class="reviewer-name">Brigitte S.</div>
@@ -680,6 +722,16 @@
 
       <div class="faq-item" role="listitem">
         <button class="faq-question" aria-expanded="false">
+          EcoWatt est-il approuvé par les fournisseurs comme EDF ou Engie ?
+          <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p>Les fournisseurs d'énergie sont des entreprises à but lucratif : leur objectif est de vendre le plus de kilowatts possible. <strong>Il est naturel qu'ils ne fassent pas la promotion d'un appareil qui réduit votre consommation.</strong> Cependant, EcoWatt respecte toutes les normes de sécurité (CE/UL) nécessaires pour être branché légalement sur n'importe quel réseau domestique en France. Tant que l'appareil est aux normes, votre fournisseur n'a aucun droit légal de s'opposer à son utilisation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false">
           Est-ce vraiment légal en France ? Mon fournisseur peut-il me pénaliser ?
           <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
         </button>
@@ -689,15 +741,18 @@
       </div>
 
       <div class="faq-item" role="listitem">
-        <div class="faq-item">
-          <div class="faq-question">Est-ce compatible avec mon compteur Linky ?</div>
-          <div class="faq-answer">
-            <p><strong>Oui, absolument.</strong> EcoWatt est conçu pour fonctionner avec tous les types de compteurs installés en France, incluant les compteurs Linky de dernière génération ainsi que les anciens modèles à roue. Quelle que soit votre installation électrique (monophasée ou triphasée), EcoWatt stabilise le courant dès qu'il franchit votre compteur — ce qui réduit immédiatement ce qui est facturé.</p>
-          </div>
+        <button class="faq-question" aria-expanded="false">
+          Est-ce compatible avec mon compteur Linky ?
+          <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Oui, absolument.</strong> EcoWatt est conçu pour fonctionner avec tous les types de compteurs installés en France, incluant les compteurs Linky de dernière génération ainsi que les anciens modèles à roue. Quelle que soit votre installation électrique (monophasée ou triphasée), EcoWatt stabilise le courant dès qu'il franchit votre compteur — ce qui réduit immédiatement ce qui est facturé.</p>
         </div>
+      </div>
         
-        <div class="faq-item">
-          <div class="faq-question">Comment EcoWatt réduit-il concrètement ce que mesure mon compteur ?</div>
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false">
+          Comment EcoWatt réduit-il concrètement ce que mesure mon compteur ?
           <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
         </button>
         <div class="faq-answer">
@@ -938,6 +993,12 @@
     }
   });
 </script>
+
+<!-- Floating Trust Badge -->
+<div class="floating-badge" id="floating-badge">
+  <div class="badge-icon"><i class="fa-solid fa-shield-check"></i></div>
+  <div class="badge-text">Garantie 30 Jours</div>
+</div>
 
 </body>
 </html>
